@@ -1,0 +1,156 @@
+<div class="table">
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Position</th>
+      <th>Jersey Number</th>
+      <th>Team</th>
+    </tr>
+    <tr *ngFor="let player of players; let i = index">
+      <th>{{ players[i]?.id }}</th>
+      <th>{{ players[i]?.first_name }}</th>
+      <th>{{ players[i]?.last_name }}</th>
+      <th>{{ players[i]?.position }}</th>
+      <th>{{ players[i]?.jersey_number }}</th>
+      <th>{{ players[i]?.team_name }}</th>
+      <th> <button class ="btn btn-danger" (click)= "deletePlayer(player.id)">Delete</button></th>
+      <th> <button class ="btn btn-primary" (click)="editPlayer(player)" *ngIf="!editPLayerEnabled">EDIT</button></th>
+      <th><button class ="btn btn-secondary" *ngIf="editPLayerEnabled" (click)="cancle()">cancle</button></th>
+    </tr>
+    
+  </table>
+</div>
+<br />
+<button
+  class="btn btn-success"
+  (click)="showPlayerForm()"
+  *ngIf="!wantToAddPlayer"
+>
+  Click To Add Player
+</button>
+<div class="form">
+  <form
+    [formGroup]="formData"
+    class="form"
+    (ngSubmit)="addPlayer(formData.value)"
+    *ngIf="wantToAddPlayer"
+  >
+    <h2 *ngIf="wantToAddPlayer">Create Player</h2>
+    <label class="row-title">First Name</label>
+    <br />
+    <input
+      class="row-attribute"
+      id="firstName"
+      type="text"
+      formControlName="first_name"
+    />
+    <br />
+    <label>Last Name</label>
+    <br />
+    <input
+      class="row-attribute"
+      id="firstName"
+      type="text"
+      formControlName="last_name"
+    />
+    <br />
+    <label>Position</label>
+    <br />
+    <input
+      class="row-attribute"
+      id="firstName"
+      type="text"
+      formControlName="position"
+    />
+    <br />
+    <label>Jersey Number</label>
+    <br />
+    <input
+      class="row-attribute"
+      id="firstName"
+      type="text"
+      formControlName="jersey_number"
+    />
+    <br />
+    <label>Team</label>
+    <br />
+    <input
+      class="row-attribute"
+      id="firstName"
+      type="text"
+      formControlName="team_name"
+    />
+    <br />
+    <br />
+    <button class="btn btn-success" type="submit">ADD PLAYER</button>
+    <br><br>
+    <button class="btn btn-danger" type="submit" (click)="cancleCreatePlayer()">Cancle Edit</button>
+  </form>
+
+
+<!-- -------------------------------------------------------------------- -->
+<br>
+  <form
+  [formGroup]="formData2"
+  class="form"
+  
+  *ngIf="editPLayerEnabled"
+>
+  <h2 *ngIf="editPLayerEnabled">Edit Player</h2>
+  <label class="row-title">First Name</label>
+  <br />
+  <input
+    class="row-attribute"
+    id="firstName"
+    type="text"
+    formControlName="first_name"
+  />
+  <br />
+  <label>Last Name</label>
+  <br />
+  <input
+    class="row-attribute"
+    id="firstName"
+    type="text"
+    formControlName="last_name"
+  />
+  <br />
+  <label>Position</label>
+  <br />
+  <input
+    class="row-attribute"
+    id="firstName"
+    type="text"
+    formControlName="position"
+  />
+  <br />
+  <label>Jersey Number</label>
+  <br />
+  <input
+    class="row-attribute"
+    id="firstName"
+    type="text"
+    formControlName="jersey_number"
+  />
+  <br />
+  <label>Team</label>
+  <br />
+  <input
+    class="row-attribute"
+    id="firstName"
+    type="text"
+    formControlName="team_name"
+  />
+  <br />
+  <br />
+  <button class="btn btn-success" (click)="submitChanges(formData2.value)">Submit Changes</button>
+</form>
+
+
+
+  
+
+
+</div>
