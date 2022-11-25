@@ -9,13 +9,13 @@
       <th>Team</th>
     </tr>
     <tr *ngFor="let player of players; let i = index">
-      <th>{{ players[i]?.id }}</th>
+      <th>{{ players[i]?.ID }}</th>
       <th>{{ players[i]?.first_name }}</th>
       <th>{{ players[i]?.last_name }}</th>
       <th>{{ players[i]?.position }}</th>
       <th>{{ players[i]?.jersey_number }}</th>
       <th>{{ players[i]?.team_name }}</th>
-      <th> <button class ="btn btn-danger" (click)= "deletePlayer(player.id)">Delete</button></th>
+      <th> <button class ="btn btn-danger" (click)= "deletePlayer(player.ID)">Delete</button></th>
       <th> <button class ="btn btn-primary" (click)="editPlayer(player)" *ngIf="!editPLayerEnabled">EDIT</button></th>
       <th><button class ="btn btn-secondary" *ngIf="editPLayerEnabled" (click)="cancle()">cancle</button></th>
     </tr>
