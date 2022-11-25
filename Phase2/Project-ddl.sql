@@ -12,7 +12,7 @@ create table team(
     team_win_percent int,
     primary key(teams_name)
 );
-
+ 
 create table player(
     ID int auto_increment,
     first_name varchar(255),

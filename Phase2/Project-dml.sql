@@ -63,7 +63,7 @@ GROUP BY
 ORDER BY
     uses desc limit 1
     
-
+ 
 -- 5. What teams played on 10/29/2022? 
 select
     games_team_name,
