@@ -3,7 +3,7 @@ drop table if exists league;
 drop table if exists player_stats;
 drop table if exists player;
 drop table if exists team;
-
+ 
 create table team(
     teams_name varchar(255),
     team_wins int,

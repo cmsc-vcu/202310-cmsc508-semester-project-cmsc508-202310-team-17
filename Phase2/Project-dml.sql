@@ -73,7 +73,7 @@ from
 WHERE   
     games_date = "2022-10-29"
 
-
+ 
 -- 6. Which teams will have 5 games remaining after mm/dd/yyyy?
 
 
