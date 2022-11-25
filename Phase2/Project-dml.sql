@@ -1,4 +1,4 @@
--- What team has the best record in their league?
+-- 1. What team has the best record in their league?
 SELECT
     teams_name,
     team_wins, 
@@ -8,13 +8,13 @@ SELECT
 FROM
     team
 GROUP BY
-    teams_name limit 1;
+    teams_name limit 1; 
 
 
--- Which player leads their team in goals?
+-- 2. Which player leads their team in goals?
 
 
--- List all of the teams in alphabetical order
+-- 3. List all of the teams in alphabetical order
 select
     teams_name
 from
@@ -23,7 +23,7 @@ order by
     teams_name;
 
 
--- Which player has the most goals in ocean dwellers league?
+-- 4. Which player has the most goals in ocean dwellers league?
 WITH sub_table1 as (
     SELECT
         *
@@ -62,8 +62,8 @@ GROUP BY
     sub_table3.2nd_name
 ORDER BY
     uses desc limit 1
-    
- 
+
+
 -- 5. What teams played on 10/29/2022? 
 select
     games_team_name,
@@ -73,7 +73,7 @@ from
 WHERE   
     games_date = "2022-10-29"
 
- 
+
 -- 6. Which teams will have 5 games remaining after mm/dd/yyyy?
 
 
@@ -139,5 +139,15 @@ where
 #    count(*) > 1 
 #order by desc
 #
-#where 
+#where
 
+
+--12.	What team has the most RW (position) players?
+--13.	How many games had more than 5 total goals scored?
+--14.	Does player A and Player B play the same position 
+--15.	What league has the largest number of teams?
+--16.	Has this Player A played in any other league?
+--17.	What teams played the most during the week of mm/dd/yyyy?
+--18.	What two teams played in the last game of the season for a specific league?
+--19.	What player assisted the first goal of the season in a specific league?
+--20.	What league had the most saves in a specific year?
