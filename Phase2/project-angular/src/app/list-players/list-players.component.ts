@@ -55,7 +55,7 @@ export class ListPlayersComponent implements OnInit {
     this.editPLayerEnabled = true;
     this.player = player;
     this.formData2 = this.formBuilder.group({
-      id: player.id,
+      id: player.ID,
       first_name: player.first_name,
       last_name: player.last_name,
       position: player.position,

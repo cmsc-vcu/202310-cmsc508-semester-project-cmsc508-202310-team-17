@@ -1,0 +1,18 @@
+<div class = 'loginPage'>
+  
+    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+      <mat-form-field>
+        Username
+        <input matInput type="text"  formControlName="username"/>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        password
+        <input  matInput type="password" formControlName="user_pass"/>
+      </mat-form-field>
+      <br>
+      <br>
+      <button>LogIn</button>
+    </form>
+ 
+</div>
