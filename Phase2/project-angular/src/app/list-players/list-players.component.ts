@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Players } from '../players';
 import { PlayersService } from '../services/players-service/Players.service';
@@ -18,7 +19,8 @@ export class ListPlayersComponent implements OnInit {
   formData2!: FormGroup;
   constructor(
     private playersService: PlayersService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit(): void {

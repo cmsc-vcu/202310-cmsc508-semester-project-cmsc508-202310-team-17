@@ -1,0 +1,158 @@
+<header class ="table_header">Team Table</header>
+<br>
+<br>
+<div class="table1">
+  <table>
+    <tr>
+      <th> Team</th>
+      <th> Wins</th>
+      <th>Losses</th>
+      <th> Ties</th>
+      <th> Win Percentage</th>
+    </tr>
+
+   
+    <tr *ngFor="let team of teams;">
+      <th>{{team?.teams_name }}</th>
+      <th>{{team.team_wins }}</th>
+      <th>{{team.team_losses }}</th>
+      <th>{{team.team_ties }}</th>
+      <th>{{team.team_win_percent}}</th>
+      <th> <button class ="btn btn-primary" (click)="edit(team)" >EDIT</button></th>
+      <!-- <th><button class ="btn btn-secondary">cancle</button></th>  -->
+    </tr>
+    
+  </table>
+
+</div>
+<button
+id="C1"
+  class="btn btn-success"
+(click)="showCreateForm()"
+*ngIf="!creatingNewTeam"
+>
+  Create A Team
+</button>
+<br>
+<br>
+<br>
+<div class="form" *ngIf="creatingNewTeam">
+    <form
+      [formGroup]="teamForm"
+      class="form"
+    (ngSubmit)="submit(teamForm.value)"
+    >
+        <header class="form-header">Create Team</header>
+        <br>
+      <label class="row-title">Team Name</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="teams_name"
+      />
+      <br />
+      <label>Team Win</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="team_wins"
+      />
+      <br />
+      <label>Team Losses</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="team_losses"
+      />
+      <br />
+      <label>Team Ties</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="team_ties"
+      />
+      <br />
+      <label>Win Percentage</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="team_win_percent"
+      />
+      <br />
+      <br />
+      <button class="btn btn-success" type="submit" >ADD TEAM</button>
+      <br><br>
+    <button class="btn btn-danger" (click)="cancle()" >Cancle</button>
+    </form>
+</div>
+<!-- ------------------------------------------------------------------------------------ -->
+<div class="form" *ngIf="editing">
+  <form
+    [formGroup]="teamForm2"
+    class="form"
+    (ngSubmit)="submitEdit(teamForm2.value)"
+  >
+      <header class="form-header">Edit Team</header>
+      <br>
+    <label class="row-title">Team Name</label>
+    <br />
+    <input
+      class="row-attribute"
+      id="firstName"
+      type="text"
+      formControlName="teams_name"
+      [readonly]="isDisabled"
+      />
+    <br />
+    <label>Team Win</label>
+    <br />
+    <input
+      class="row-attribute"
+      id="firstName"
+      type="text"
+      formControlName="team_wins"
+    />
+    <br />
+    <label>Team Losses</label>
+    <br />
+    <input
+      class="row-attribute"
+      id="firstName"
+      type="text"
+      formControlName="team_losses"
+    />
+    <br />
+    <label>Team Ties</label>
+    <br />
+    <input
+      class="row-attribute"
+      id="firstName"
+      type="text"
+      formControlName="team_ties"
+    />
+    <br />
+    <label>Win Percentage</label>
+    <br />
+    <input
+      class="row-attribute"
+      id="firstName"
+      type="text"
+      formControlName="team_win_percent"
+    />
+    <br />
+    <br />
+    <button class="btn btn-success" type="submit" >Finish</button>
+    <br><br>
+  <button class="btn btn-danger" (click)="cancle()">Cancle</button>
+  </form>
+</div>

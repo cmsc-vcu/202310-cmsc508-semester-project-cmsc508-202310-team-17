@@ -1,4 +1,7 @@
-<div class="table">
+<header class ="table_header">Player Table</header>
+<br>
+<br>
+<div class="table1">
   <table>
     <tr>
       <th>ID</th>
@@ -24,6 +27,7 @@
 </div>
 <br />
 <button
+id="C1"
   class="btn btn-success"
   (click)="showPlayerForm()"
   *ngIf="!wantToAddPlayer"
@@ -154,3 +158,5 @@
 
 
 </div>
+<app-team></app-team>
+<app-games></app-games>

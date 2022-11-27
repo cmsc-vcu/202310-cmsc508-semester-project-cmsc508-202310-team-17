@@ -15,12 +15,16 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import { TeamComponent } from './team/team.component';
+import { GamesComponent } from './games/games.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListPlayersComponent,
-    LoginComponent
+    LoginComponent,
+    TeamComponent,
+    GamesComponent
 
   ],
   imports: [

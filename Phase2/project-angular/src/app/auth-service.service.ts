@@ -17,8 +17,7 @@ export class AuthServiceService {
       .pipe(
         map((result) => {
           if (result.message === 'success') {
-            console.log('Access Granted');
-            this.router.navigate(['/tables-access-grated/SJHGUIHjHUGHUJKGHUGHGJNUFG^3723298872342342342']);
+            this.router.navigate(['/tables-access-grated']);
           } else {
             window.alert("USERNAME AND PASSWORD IS NOT REGISTERD");
           }

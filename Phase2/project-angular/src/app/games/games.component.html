@@ -1,0 +1,160 @@
+<header class ="table_header">Game Table</header>
+<br>
+<br>
+<div class="table1">
+  <table>
+    <tr>
+      <th> ID</th>
+      <th> Date</th>
+      <th>Home Team</th>
+      <th> Home goals</th>
+      <th> Opponent</th>
+      <th> Away goals</th>
+    </tr>
+
+   
+    <tr *ngFor="let game of games;">
+      <th>{{game?.match_ID}}</th>
+      <th>{{game.games_date }}</th>
+      <th>{{game.games_team_name }}</th>
+      <th>{{game.home_goals }}</th>
+      <th>{{game.opponent}}</th>
+      <th>{{game.away_goals}}</th>
+      <th> <button class ="btn btn-danger" (click)= "deleteGame(game.match_ID)">Delete</button></th>
+      <th> <button class ="btn btn-primary" (click)="edit(game)" >EDIT</button></th>
+    </tr>
+    
+  </table>
+
+</div>
+<br>
+<button 
+id="C1"
+class="btn btn-success"
+(click)="showCreateForm()"
+*ngIf="!creatingNewTeam"
+>Create A Game</button>
+<br>
+<div class="form" *ngIf="creatingNewTeam">
+    <form
+      [formGroup]="gameForm"
+      class="form"
+      (ngSubmit)="submitForm(gameForm.value)"
+    >
+        <header class="form-header">Create Game</header>
+        <br>
+      
+      <br />
+      <label>date</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="games_date"
+      />
+      <br />
+      <label>Home Team</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="games_team_name"
+      />
+      <br />
+      <label>Home Team Goals</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="home_goals"
+      />
+      <br />
+      <label>Opponent</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="opponent"
+      />
+      <br />
+      <label>Away Team Goals</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="away_goals"
+      />
+      <br>
+      <br />
+      <button class="btn btn-success" type="submit" >ADD GAME</button>
+      <br><br>
+    <button class="btn btn-danger" (click)="cancle()" >Cancle</button>
+    </form>
+</div>
+
+<div class="form" *ngIf="editing">
+    <form
+      [formGroup]="gameForm2"
+      class="form"
+      (ngSubmit)="submitEdit(gameForm2.value)"
+    >
+        <header class="form-header">Create Game</header>
+        <br>
+      
+      <br />
+      <label>date</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="games_date"
+      />
+      <br />
+      <label>Home Team</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="games_team_name"
+      />
+      <br />
+      <label>Home Team Goals</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="home_goals"
+      />
+      <br />
+      <label>Opponent</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="opponent"
+      />
+      <br />
+      <label>Away Team Goals</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="away_goals"
+      />
+      <br>
+      <br />
+      <button class="btn btn-success" type="submit" >Finish</button>
+      <br><br>
+    <button class="btn btn-danger" (click)="cancleEdit()" >Cancle</button>
+    </form>
+</div>
