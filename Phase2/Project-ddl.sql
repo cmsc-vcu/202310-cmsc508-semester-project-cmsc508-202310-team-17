@@ -9,12 +9,12 @@ create table team(
     team_wins int,
     team_losses int,
     team_ties int,
-    team_win_percent int,
+    team_win_percent int, 
     primary key(teams_name)
 );
  
 create table player(
-    ID int auto_increment,
+    ID int auto_increment, 
     first_name varchar(255),
     last_name varchar(255),
     position varchar(255),
@@ -59,32 +59,47 @@ insert into team (teams_name, team_wins, team_losses, team_ties, team_win_percen
     ("Jags", 0, 7, 0, 0),
     ("Hornets", 2, 5, 0, 28),
     ("Straw Hats", 4, 1, 2, 57), 
-    ("Books", 6, 0, 1, 86);
+    ("Books", 6, 0, 1, 86), 
+    ("Justice", 3, 3, 1, 43),
+    ("Injustice", 7, 0, 0, 100),
+    ("Champloo", 1, 5, 1, 14);
 
 insert into player(first_name, last_name, position, jersey_number, team_name) values
     ("Derrick", "Kyereh", "CB", 11, "Sharks"),
     ("Corey", "Long", "LB", 13, "Hornets"),
     ("Taylor", "Joseph", "ST", 5, "Jags"),
     ("John", "Cena", "LW", 9, "Books"),
-    ("Zoro", "Roronoa", "RW", 17, "Straw Hats");
+    ("Zoro", "Roronoa", "RW", 17, "Straw Hats"),
+    ("Super", "Man", "RB", 1, "Justice"), 
+    ("Harley", "Quinn", "CM", 10, "Injustice"),
+    ("Mugen", "Jinn", "CAM", 9, "Champloo");
 
 insert into player_stats(player_ID, goals, assists, saves) values 
     (1, 5, 2, 0),
     (2, 7, 3, 1),
     (3, 0, 2, 3),
     (4, 1, 4, 2),
-    (5, 6, 1, 4);
+    (5, 6, 1, 4),
+    (6, 2, 0, 5),
+    (7, 3, 5, 0),
+    (8, 4, 6, 0);
 
 insert into league(league_name, league_team_name, win_percentage) values
     ("Ocean Dwellers", "Sharks", 71),
-    ("Field Dwellers", "Jags", 0),
-    ("Air Dwellers", "Hornets", 28),
     ("Ocean Dwellers", "Straw Hats", 57),
-    ("Field Dwellers", "Books", 86);
+    ("Field Dwellers", "Jags", 0),
+    ("Field Dwellers", "Books", 86),
+    ("Field Dwellers", "Injustice", 100),
+    ("Air Dwellers", "Hornets", 28),
+    ("Air Dwellers", "Justice", 43),
+    ("Air Dwellers", "Champloo", 14);
 
 insert into games(games_date, games_team_name, home_goals, opponent, away_goals) values
     ('2022-10-29', "Sharks", 5, "Jags", 3),
     ('2022-10-25', "Jags", 2, "Hornets", 4),
     ('2022-10-20', "Hornets", 0, "Straw Hats", 6),
-    ('2022-10-15', "Straw Hats", 4, "Books", 2),
-    ('2022-10-18', "Books", 5, "Sharks", 7);
+    ('2022-10-18', "Straw Hats", 4, "Books", 2),
+    ('2022-10-16', "Books", 5, "Justice", 7),
+    ('2022-10-14', "Justice", 1, "Injustice", 3),
+    ('2022-10-12', "Injustice", 6, "Champloo", 0),
+    ('2022-10-10', "Champloo", 1, "Sharks", 2);
