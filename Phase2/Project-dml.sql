@@ -123,29 +123,103 @@ where
 
 
 -- 11.	What teams have the same exact record?
-#select
-#    #teams_name, 
-#    team_wins, 
-#    team_losses,
-#    team_ties, 
-#    count(*) as B 
-#from 
-#    team
-#group by
-#    team_wins,
-#    team_losses, 
-#    team_ties
-#having
-#    count(*) > 1 
-#order by desc
-#
-#where
+WITH sub_table5 as (
+    SELECT
+        #teams_name,
+        team_wins, 
+        team_losses,
+        team_ties,
+        count(*)
+    FROM
+        team
+    GROUP BY
+        team_wins, 
+        team_losses, 
+        team_ties
+    HAVING count(*) > 1
+)
+SELECT
+    teams_name
+FROM
+    team
+WHERE
+    team_wins = 3 AND team_losses = 3 AND team_ties = 1;
 
 
 --12.	What team has the most RW (position) players?
+WITH sub_table6 as (
+    SELECT
+        team_name,
+        position,
+        count("*") as Numbers
+    FROM
+        player
+    WHERE
+        position = "RW"
+    GROUP BY 
+        position, team_name
+),
+sub_table7 as (
+    SELECT
+        MAX (Numbers) as Maxs
+    FROM
+        sub_table6
+)
+SELECT 
+    team_name
+FROM 
+    sub_table7
+    JOIN sub_table6 ON (Maxs = Numbers);
+
+
 --13.	How many games had more than 5 total goals scored?
---14.	Does player A and Player B play the same position 
+SELECT
+    count(*)  
+FROM
+    games
+WHERE
+    home_goals + away_goals > 5;
+
+
+--14.	Do player A and Player B play the same position?
+SELECT
+    first_name,
+    position
+FROM
+    player
+WHERE
+    first_name = "Zoro" OR first_name = "Sanji"
+
+
+
+            # just name and position returning to check answer, not a yes or no
+
+
+
+
 --15.	What league has the largest number of teams?
+with sub_table8 as (
+    SELECT
+        league_name,
+        count(league_name) as number_of
+    FROM
+        league
+    GROUP BY
+        league_name
+),
+sub_table9 as(
+    SELECT
+        MAX(number_of) AS maxs
+    from 
+        sub_table8
+)
+SELECT
+    league_name
+FROM
+    sub_table9
+    JOIN sub_table8 ON (maxs = number_of)
+
+
 --16.	Has this Player A played in any other league?
 --17.	What teams played the most during the week of mm/dd/yyyy?
 --18.	What two teams played in the last game of the season for a specific league?
