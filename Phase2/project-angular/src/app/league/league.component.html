@@ -1,0 +1,120 @@
+<header class ="table_header">League</header>
+<br>
+<br>
+<div class="table1">
+  <table>
+    <tr>
+      <th> League Name</th>
+      <th> Team Name</th>
+      <th>Win Percentage</th>
+    </tr>
+
+   
+    <tr *ngFor="let league of leagues;">
+      <th>{{league?.league_name}}</th>
+      <th>{{league?.league_team_name }}</th>
+      <th>{{league?.win_percentage }}</th>
+      <th> <button class ="btn btn-danger" (click)= "deleteLeague(league.league_name, league.league_team_name)">Delete</button></th>
+      <th> <button class ="btn btn-primary" (click)="edit(league)" >EDIT</button></th>
+    </tr>
+    
+</table>
+</div>
+<br>
+<button 
+id="C1"
+class="btn btn-success"
+(click)="showCreateForm()"
+*ngIf="!creatingNewTeam"
+>Create</button>
+<br>
+<div class="form" *ngIf="creatingNewTeam">
+    <form
+      [formGroup]="leagueForm"
+      class="form"
+      (ngSubmit)="submitForm(leagueForm.value)"
+    >
+        <header class="form-header">Create League</header>
+        <br>
+      
+      <br />
+      <label>League Name</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="league_name"
+      />
+      <br />
+      <label>Team Name</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="league_team_name"
+      />
+      <br />
+      <label>Win Percentage</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="win_percentage"
+      />
+      <br>
+      <br />
+      <button class="btn btn-success" type="submit" >ADD</button>
+      <br><br>
+    <button class="btn btn-danger" (click)="cancle()" >Cancle</button>
+    </form>
+</div>
+
+<div class="form" *ngIf="editing">
+  <br><br>
+  <form
+    [formGroup]="leagueForm2"
+    class="form"
+    (ngSubmit)="submitEdit(leagueForm2.value)"
+  >
+      <header class="form-header">Create League</header>
+      <br>
+    
+    <br />
+    <label>League Name</label>
+    <br />
+    <input
+      readonly
+      class="row-attribute"
+      id="firstName"
+      type="text"
+      formControlName="league_name"
+    />
+    <br />
+    <label>Team Name</label>
+    <br />
+    <input
+      readonly
+      class="row-attribute"
+      id="firstName"
+      type="text"
+      formControlName="league_team_name"
+    />
+    <br />
+    <label>Win Percentage</label>
+    <br />
+    <input
+      class="row-attribute"
+      id="firstName"
+      type="text"
+      formControlName="win_percentage"
+    />
+    <br>
+    <br />
+    <button class="btn btn-success" type="submit" >FINISH</button>
+    <br><br>
+  <button class="btn btn-danger" (click)="cancleEdit()" >Cancle</button>
+  </form>
+</div>

@@ -1,0 +1,140 @@
+<header class ="table_header">Player Stats</header>
+<br>
+<br>
+<div class="table1">
+  <table>
+    <tr>
+      <th>Player ID</th>
+      <th>Goals</th>
+      <th>Assists</th>
+      <th>Saves</th>
+    </tr>
+
+   
+    <tr *ngFor="let player of players;">
+      <th>{{player?.player_ID}}</th>
+      <th>{{player?.goals }}</th>
+      <th>{{player?.assists }}</th>
+      <th>{{player?.saves}}</th>
+      <th> <button class ="btn btn-danger" (click)= "deletePlayerStats(player.player_ID)">Delete</button></th>
+      <th> <button class ="btn btn-primary" (click)="edit(player)" >EDIT</button></th>
+    </tr>
+    
+</table>
+</div>
+<br>
+<br>
+<button 
+id="C1"
+class="btn btn-success"
+(click)="showCreateForm()"
+*ngIf="!creatingNewTeam"
+>Create</button>
+<br>
+<div class="form" *ngIf="creatingNewTeam">
+    <form
+      [formGroup]="playerStatsForm"
+      class="form"
+      (ngSubmit)="submitForm(playerStatsForm.value)"
+    >
+        <header class="form-header">Create Stats</header>
+        <br>
+      
+      <br />
+      <label>Player ID</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="player_ID"
+      />
+      <br />
+      <label>Goals</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="goals"
+      />
+      <br />
+      <label>assists</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="assists"
+      />
+      <br>
+      <label>saves</label>
+      <br />
+      <input
+        class="row-attribute"
+        id="firstName"
+        type="text"
+        formControlName="saves"
+      />
+      <br>
+      <br />
+      <button class="btn btn-success" type="submit" >ADD</button>
+      <br><br>
+    <button class="btn btn-danger" (click)="cancle()" >Cancle</button>
+    </form>
+</div>
+
+
+<div class="form" *ngIf="editing">
+  <form
+    [formGroup]="playerStatsForm2"
+    class="form"
+    (ngSubmit)="submitEdit(playerStatsForm2.value)"
+  >
+      <header class="form-header">Edit Stats</header>
+      <br>
+    
+    <br />
+    <label>Player ID</label>
+    <br />
+    <input
+      readonly
+      class="row-attribute"
+      id="firstName"
+      type="text"
+      formControlName="player_ID"
+    />
+    <br />
+    <label>Goals</label>
+    <br />
+    <input
+      class="row-attribute"
+      id="firstName"
+      type="text"
+      formControlName="goals"
+    />
+    <br />
+    <label>assists</label>
+    <br />
+    <input
+      class="row-attribute"
+      id="firstName"
+      type="text"
+      formControlName="assists"
+    />
+    <br>
+    <label>saves</label>
+    <br />
+    <input
+      class="row-attribute"
+      id="firstName"
+      type="text"
+      formControlName="saves"
+    />
+    <br>
+    <br />
+    <button class="btn btn-success" type="submit" >ADD</button>
+    <br><br>
+  <button class="btn btn-danger" (click)="cancleEdit()" >Cancle</button>
+  </form>
+</div>

@@ -81,4 +81,5 @@ export class ListPlayersComponent implements OnInit {
       window.location.reload();
     });
   }
+  
 }

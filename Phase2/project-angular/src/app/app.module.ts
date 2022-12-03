@@ -17,6 +17,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { TeamComponent } from './team/team.component';
 import { GamesComponent } from './games/games.component';
+import { LeagueComponent } from './league/league.component';
+import { PlayerStatsComponent } from './player-stats/player-stats.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { GamesComponent } from './games/games.component';
     ListPlayersComponent,
     LoginComponent,
     TeamComponent,
-    GamesComponent
+    GamesComponent,
+    LeagueComponent,
+    PlayerStatsComponent
 
   ],
   imports: [
