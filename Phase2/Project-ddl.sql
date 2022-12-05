@@ -3,22 +3,7 @@ drop table if exists league;
 drop table if exists player_stats;
 drop table if exists player;
 drop table if exists team;
-DROP VIEW IF EXISTS QUERY1;
-DROP VIEW IF EXISTS QUERY3;
-DROP VIEW IF EXISTS QUERY4;
-DROP VIEW IF EXISTS QUERY5;
-DROP VIEW IF EXISTS QUERY8;
-DROP VIEW IF EXISTS QUERY9;
-DROP VIEW IF EXISTS QUERY10;
-DROP VIEW IF EXISTS QUERY11;
-DROP VIEW IF EXISTS QUERY13;
-DROP VIEW IF EXISTS QUERY14;
-DROP VIEW IF EXISTS QUERY15;
-
-
-
-
-
+ 
 create table team(
     teams_name varchar(255),
     team_wins int,
@@ -67,20 +52,6 @@ create table games(
     foreign key(games_team_name) references team(teams_name)
 );
 
-CREATE VIEW QUERY1 as ( SELECT teams_name, team_wins, team_losses, team_ties, MAX(team_win_percent) FROM team GROUP BY teams_name limit 1 );
-CREATE VIEW QUERY3 as ( select teams_name from team order by teams_name );
-CREATE VIEW QUERY4 as ( WITH sub_table1 as ( SELECT * FROM player left join player_stats on (ID = player_ID) ), sub_table2 as ( SELECT * FROM team as A left join league as B on (A.teams_name = B.league_team_name) ), sub_table3 as ( SELECT league_name, teams_name, first_name as 1st_name, last_name as 2nd_name, MAX(goals) as Top_Goals FROM sub_table1 left join sub_table2 on (sub_table1.team_name = sub_table2.teams_name) WHERE league_name = "Ocean Dwellers" GROUP by teams_name, league_name, first_name, last_name ) SELECT MAX(sub_table3.Top_Goals) as uses, sub_table3.1st_name, sub_table3.2nd_name, league_name FROM sub_table3 GROUP BY sub_table3.1st_name, sub_table3.2nd_name ORDER BY uses desc limit 1 );
-CREATE VIEW QUERY5 as ( select games_team_name, opponent from games WHERE games_date = "2022-10-29");
-CREATE VIEW QUERY7 as ( with sub_table4 as ( select games_team_name, opponent, games_date from games where games_team_name = "Sharks" AND opponent = "Jags" OR games_team_name = "Jags" AND opponent = "Sharks" ) select count(games_date) as Times_Played from sub_table4 );
-CREATE VIEW QUERY8 as ( select first_name, last_name from player where jersey_number = "13" );
-CREATE VIEW QUERY9 as ( SELECT league_team_name from league where league_name != "Ocean Dwellers" );
-CREATE VIEW QUERY10 as ( SELECT teams_name from team where team_win_percent < 50 );
-CREATE VIEW QUERY11 as ( WITH sub_table5 as ( SELECT #teams_name, team_wins, team_losses, team_ties, count(*) FROM team GROUP BY team_wins, team_losses, team_ties HAVING count(*) > 1 ) SELECT teams_name FROM team WHERE team_wins = 3 AND team_losses = 3 AND team_ties = 1 );
-CREATE VIEW QUERY13 as ( SELECT count(*) FROM games WHERE home_goals + away_goals > 5 );
-CREATE VIEW QUERY14 as ( SELECT first_name, position FROM player WHERE first_name = "Zoro" OR first_name = "Sanji" );
-CREATE VIEW QUERY15 as ( with sub_table8 as ( SELECT league_name, count(league_name) as number_of FROM league GROUP BY league_name ), sub_table9 as( SELECT MAX(number_of) AS maxs from sub_table8 ) SELECT league_name FROM sub_table9 JOIN sub_table8 ON (maxs = number_of) );
-
-
 
 
 insert into team (teams_name, team_wins, team_losses, team_ties, team_win_percent) values
@@ -88,19 +59,13 @@ insert into team (teams_name, team_wins, team_losses, team_ties, team_win_percen
     ("Barracudas", 1, 4, 2, 14),
     ("Straw Hats", 7, 0, 0, 100), 
     ("Buggy Pirates", 0, 4, 3, 0),
-    ("Donquixote Pirates", 6, 1, 0, 86)
+    ("Donquixote Pirates", 6, 1, 0, 86),
 
     ("Hornets", 2, 5, 0, 28),
     ("Justice", 3, 3, 1, 43),
     ("Bees", 4, 2, 1, 57),
     ("Hawks", 5, 0, 2, 71),
-    ("Bluejays", 3, 4, 1, 43);
-
-    #("Books", 6, 0, 1, 86), 
-    #("Jags", 0, 7, 0, 0),
-    #("Champloo", 1, 5, 1, 14),
-    #("Bebops", 4, 1, 2, 57),
-    #("Super Crooks", 3, 4, 0, 43);
+    ("Blue Jays", 3, 3, 1, 43);
 
 insert into player(first_name, last_name, position, jersey_number, team_name) values
     ("Derrick", "Kyereh", "CB", 11, "Sharks"),
@@ -159,7 +124,7 @@ insert into player_stats(player_ID, goals, assists, saves) values
     (13, 1, 4, 1),
     (14, 0, 8, 3),
     (15, 3, 5, 2),
-    (16, 7, 9, 1),
+    (16, 8, 9, 1),
     (17, 2, 4, 0),
     (18, 1, 5, 0),
     (19, 2, 4, 0),
@@ -186,12 +151,7 @@ insert into league(league_name, league_team_name, win_percentage) values
     ("Air Dwellers", "Justice", 43),
     ("Air Dwellers", "Bees", 57),
     ("Air Dwellers", "Hawks", 71),
-    ("Air Dwellers", "Blue Jays", 43),
-
-    #("Field Dwellers", "Jags", 0),
-    #("Field Dwellers", "Books", 86),
-    #("Field Dwellers", "Champloo", 14),
-    ;
+    ("Air Dwellers", "Blue Jays", 43);
 
 insert into games(games_date, games_team_name, home_goals, opponent, away_goals) values
     ('2022-10-29', "Sharks", 3, "Straw Hats", 5),
@@ -205,7 +165,6 @@ insert into games(games_date, games_team_name, home_goals, opponent, away_goals)
     ('2022-10-7', "Barracudas", 2, "Straw Hats", 4),
     ('2022-10-5', "Sharks", 1, "Buggy Pirates", 1),
 
-
     ('2022-10-16', "Hornets", 5, "Justice", 7),
     ('2022-10-14', "Justice", 1, "Bees", 3),
     ('2022-10-12', "Bees", 6, "Hawks", 0),
@@ -215,5 +174,4 @@ insert into games(games_date, games_team_name, home_goals, opponent, away_goals)
     ('2022-10-4', "Bees", 0, "Blue Jays", 5),
     ('2022-10-2', "Hawks", 2, "Hornets", 2),
     ('2022-10-1', "Hornets", 5, "Blue Jays", 2),
-    ('2022-9-30', "Bees", 3, "Justice", 4),
-    ;
+    ('2022-9-30', "Bees", 3, "Justice", 4);

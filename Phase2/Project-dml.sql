@@ -187,7 +187,8 @@ sub_table7 as (
         sub_table6
 )
 SELECT 
-    team_name
+    team_name, 
+    Numbers
 FROM 
     sub_table7
     JOIN sub_table6 ON (Maxs = Numbers);
@@ -209,13 +210,7 @@ SELECT
 FROM
     player
 WHERE
-    first_name = "Zoro" OR first_name = "Sanji"
-
-
-
-            # just name and position returning to check answer, not a yes or no
-
-
+    first_name = "Zoro" OR first_name = "Sanji";
 
 
 --15.	What league has the largest number of teams?
@@ -238,7 +233,7 @@ SELECT
     league_name
 FROM
     sub_table9
-    JOIN sub_table8 ON (maxs = number_of)
+    JOIN sub_table8 ON (maxs = number_of);
 
 
 -- 16.	What team is "Luffy D Monkey" on?
@@ -277,7 +272,7 @@ SELECT
     opponent,
     thedate
 FROM
-    games JOIN sub_table11 on (games_date = thedate)
+    games JOIN sub_table11 on (games_date = thedate);
 
 
 -- 19.	What team has played the most home games?
@@ -290,7 +285,6 @@ GROUP BY
     games_team_name
 ORDER BY 
     Home_Games DESC LIMIT 1;
-
 
 
 --20.	What league had the most saves?
@@ -306,8 +300,8 @@ WITH sub_table10 as (
         max(saves) DESC LIMIT 1
 )
 SELECT
-    saves,
-    league_name
+    league_name,
+    saves
 FROM
     sub_table10 JOIN league ON (team_name = league_team_name);
 
