@@ -19,6 +19,7 @@ import { TeamComponent } from './team/team.component';
 import { GamesComponent } from './games/games.component';
 import { LeagueComponent } from './league/league.component';
 import { PlayerStatsComponent } from './player-stats/player-stats.component';
+import { ReportsComponent } from './reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PlayerStatsComponent } from './player-stats/player-stats.component';
     TeamComponent,
     GamesComponent,
     LeagueComponent,
-    PlayerStatsComponent
+    PlayerStatsComponent,
+    ReportsComponent
 
   ],
   imports: [
