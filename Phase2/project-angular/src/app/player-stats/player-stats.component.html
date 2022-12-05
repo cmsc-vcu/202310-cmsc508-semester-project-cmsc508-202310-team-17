@@ -53,12 +53,15 @@
 </div>
 <br>
 <br>
-<button 
-id="C1"
-class="btn btn-success"
-(click)="showCreateForm()"
-*ngIf="!creatingNewTeam"
->Create</button>
+<div class ="center">
+  <button 
+  id="C1"
+  class="btn btn-success"
+  (click)="showCreateForm()"
+  *ngIf="!creatingNewTeam"
+  >Create</button>
+</div>
+
 <br>
 <div class="form" *ngIf="creatingNewTeam">
     <form

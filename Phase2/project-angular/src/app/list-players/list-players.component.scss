@@ -3,7 +3,9 @@
 }
 
 .table1{
-    margin-left: 30%;
+    
+ display: flex;
+justify-content: center; 
 
     
 }
@@ -14,11 +16,9 @@
     font-size: x-large;
 }
 .form{
-    margin-left: 27%;
+    text-align: center;
 }
-#C1{
-    margin-left: 50%;
-}
+
 table {
     border-collapse: separate;
     border-spacing: 50px 0;
@@ -26,4 +26,8 @@ table {
 
 td {
     padding: 10px 0;
+  }
+  .center{
+    display: flex;
+justify-content: center; 
   }

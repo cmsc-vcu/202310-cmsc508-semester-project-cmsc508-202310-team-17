@@ -57,13 +57,14 @@
 
 </div>
 <br>
-<button 
-id="C1"
-class="btn btn-success"
-(click)="showCreateForm()"
-*ngIf="!creatingNewTeam"
->Create A Game</button>
-<br>
+<div class="center"><button 
+  id="C1"
+  class="btn btn-success"
+  (click)="showCreateForm()"
+  *ngIf="!creatingNewTeam"
+  >Create A Game</button>
+  <br></div>
+
 <div class="form" *ngIf="creatingNewTeam">
     <form
       [formGroup]="gameForm"

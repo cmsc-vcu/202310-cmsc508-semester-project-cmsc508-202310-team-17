@@ -3,7 +3,9 @@
 }
 
 .table1{
-    margin-left: 37%;
+    
+ display: flex;
+justify-content: center; 
 
     
 }
@@ -14,19 +16,17 @@
     font-size: x-large;
 }
 .form{
-    margin-left: 27%;
+    text-align: center;
 }
-#C1{
-    margin-left: 50%;
-}
+
 table {
     border-collapse: separate;
     border-spacing: 50px 0;
   }
-  
-  td {
+
+td {
     padding: 10px 0;
   }
-  .form-header{
-    font-size: x-large;
+  .center{
+    text-align: center;
   }

@@ -59,14 +59,16 @@
   </table>
 </div>
 <br />
-<button
-id="C1"
-  class="btn btn-success"
-  (click)="showPlayerForm()"
-  *ngIf="!wantToAddPlayer"
->
-  Click To Add Player
-</button>
+<div class="center">
+  <button
+  id="C1"
+    class="btn btn-success"
+    (click)="showPlayerForm()"
+    *ngIf="!wantToAddPlayer"
+  >
+    Click To Add Player
+  </button></div>
+
 <div class="form">
   <form
     [formGroup]="formData"

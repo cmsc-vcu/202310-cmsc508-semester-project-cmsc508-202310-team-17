@@ -1,28 +1,34 @@
-.table1{
-    margin-left: 27%;
+.form{
+  margin-left: 2%;
+}
 
-    
+.table1{
+  
+display: flex;
+justify-content: center; 
+
+  
 }
 
 .table_header{
-    margin-top:5%;
-    margin-left: 50%;
-    font-size: x-large;
+  margin-top:5%;
+  margin-left: 50%;
+  font-size: x-large;
 }
+.form{
+  text-align: center;
+}
+
 table {
-    border-collapse: separate;
-    border-spacing: 50px 0;
-  }
+  border-collapse: separate;
+  border-spacing: 50px 0;
+}
 
 td {
-    padding: 10px 0;
-  }
-  .form-header{
-    font-size: x-large;
-  }
-  .form{
-    margin-left: 27%;
+  padding: 10px 0;
 }
-#C1{
-    margin-left: 50%;
+.center{
+  border: black solid 1px;
+  display: flex;
+justify-content: center; 
 }
