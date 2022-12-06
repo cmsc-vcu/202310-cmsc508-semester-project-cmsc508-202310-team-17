@@ -41,7 +41,7 @@ WITH sub_table1 AS (
     FROM   
         player LEFT JOIN player_stats ON (ID = player_ID)
 ), 
-sub_table2 as (
+sub_table2 AS (
     SELECT
         * 
     FROM 
@@ -144,9 +144,8 @@ WHERE
 
 
 -- 11.	What teams have the same exact record?
-WITH sub_table5 as (
+WITH sub_table5 AS (
     SELECT
-        #teams_name,
         team_wins, 
         team_losses,
         team_ties,
@@ -157,7 +156,7 @@ WITH sub_table5 as (
         team_wins, 
         team_losses, 
         team_ties
-    HAVING count(*) > 1
+    HAVING COUNT(*) > 1
 )
 SELECT
     teams_name
@@ -168,21 +167,22 @@ WHERE
 
 
 --12.	What team has the most RW (position) players?
-WITH sub_table6 as (
+WITH sub_table6 AS (
     SELECT
         team_name,
         position,
-        count("*") as Numbers
+        COUNT("*") AS Numbers
     FROM
         player
     WHERE
         position = "RW"
     GROUP BY 
-        position, team_name
+        position, 
+        team_name
 ),
-sub_table7 as (
+sub_table7 AS (
     SELECT
-        MAX (Numbers) as Maxs
+        MAX(Numbers) AS Maxs
     FROM
         sub_table6
 )
@@ -196,7 +196,7 @@ FROM
 
 --13.	How many games had more than 5 total goals scored?
 SELECT
-    count(*)  
+    COUNT(*)  
 FROM
     games
 WHERE
@@ -214,19 +214,19 @@ WHERE
 
 
 --15.	What league has the largest number of teams?
-with sub_table8 as (
+WITH sub_table8 AS (
     SELECT
         league_name,
-        count(league_name) as number_of
+        COUNT(league_name) AS number_of
     FROM
         league
     GROUP BY
         league_name
 ),
-sub_table9 as(
+sub_table9 AS(
     SELECT
         MAX(number_of) AS maxs
-    from 
+    FROM 
         sub_table8
 )
 SELECT
@@ -261,9 +261,9 @@ ORDER BY
 
 
 -- 18.	What two teams played in the most recent game?
-WITH sub_table11 as(
+WITH sub_table11 AS(
     SELECT
-        max(games_date) as thedate
+        MAX(games_date) AS thedate
     FROM
         games
 )
@@ -272,12 +272,12 @@ SELECT
     opponent,
     thedate
 FROM
-    games JOIN sub_table11 on (games_date = thedate);
+    games JOIN sub_table11 ON (games_date = thedate);
 
 
 -- 19.	What team has played the most home games?
 SELECT
-    count(games_team_name) as Home_Games,
+    COUNT(games_team_name) AS Home_Games,
     games_team_name
 FROM
     games
@@ -288,9 +288,9 @@ ORDER BY
 
 
 --20.	What league had the most saves?
-WITH sub_table10 as ( 
+WITH sub_table10 AS ( 
     SELECT
-        max(saves) as saves,
+        MAX(saves) AS saves,
         team_name
     FROM
         player JOIN player_stats ON (ID = player_ID)
@@ -304,25 +304,3 @@ SELECT
     saves
 FROM
     sub_table10 JOIN league ON (team_name = league_team_name);
-
-
--- 1. What team has the best record in their league?
--- 2. What are the leading goal scorers' amounts for each team?
--- 3. List all of the teams in alphabetical order
--- 4. Which player has the most goals in ocean dwellers league?
--- 5. What teams played on 10/29/2022? 
--- 6. Which teams played after 10/13/2022?
--- 7. How many times did the Sharks play the Jags this year?
--- 8.	What player has the jersey number 13?
--- 9.	What teams are not in the same league as team Straw Hats?
--- 10.	What teams are under .5 win rate?
--- 11.	What teams have the same exact record?
--- 12.	What team has the most RW (position) players?
--- 13.	How many games had more than 5 total goals scored?
--- 14.	Do player A and Player B play the same position?
--- 15.	What league has the largest number of teams?
--- 16.	What team is "Luffy D Monkey" on?
--- 17.	What teams played during the week of 10/02/2022?
--- 18.	What two teams played in the most recent game?
--- 19.	What team has played the most home games?
--- 20.	What league had the most saves?
