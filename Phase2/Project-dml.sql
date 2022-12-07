@@ -149,7 +149,7 @@ WITH sub_table5 AS (
         team_wins, 
         team_losses,
         team_ties,
-        count(*)
+        COUNT(*)
     FROM
         team
     GROUP BY
@@ -297,7 +297,7 @@ WITH sub_table10 AS (
     GROUP BY
         team_name
     ORDER BY 
-        max(saves) DESC LIMIT 1
+        MAX(saves) DESC LIMIT 1
 )
 SELECT
     league_name,
