@@ -1,29 +1,355 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Sign Out</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="tables-access-grated">Players Table</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="teams">Teams Table</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="games">Games Table</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="league">League Table</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="player-stats">Player Stats</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="reports">Reports</a>
-        </li>
-      </ul>
+  <a class="navbar-brand" href="#">Sign Out</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="tables-access-grated">Players Table</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="teams">Teams Table</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="games">Games Table</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="league">League Table</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="player-stats">Player Stats</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="reports">Reports</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br />
+<div class="all">
+  <br />
+  <div class="center"><header class="table_header">Reports</header></div>
+  <br />
+  <header>What team has the best record in their league?</header>
+  <br />
+  <div class="table1">
+    <table>
+      <tr>
+        <th>Team Name</th>
+        <th>Team Wins</th>
+        <th>Team Losses</th>
+        <th>Team Ties</th>
+        <th>Max(team_win_percent)</th>
+      </tr>
+
+      <tr>
+        <th>{{ query1?.teams_name }}</th>
+        <th>{{ query1?.team_wins }}</th>
+        <th>{{ query1?.team_losses }}</th>
+        <th>{{ query1?.team_ties }}</th>
+        <th>{{query1?.["MAX(team_win_percent)"]}}</th>
+      </tr>
+    </table>
+  </div>
+  <br />
+  <header>What are the leading goal scores' amounts for each team?</header>
+  <br />
+  <div class="table1">
+    <table>
+      <tr>
+        <th>Max Goals</th>
+        <th>Team Name</th>
+      </tr>
+
+      <tr *ngFor="let q of query2">
+        <th>{{ q?.Top_Amount }}</th>
+        <th>{{ q?.team_name }}</th>
+      </tr>
+    </table>
+  </div>
+  <br />
+  <header>List all of the teams in alphabetical order</header>
+  <br />
+  <div class="table1">
+    <table>
+      <tr>
+        <th>Team Name</th>
+      </tr>
+
+      <tr *ngFor="let q of query3">
+        <th>{{ q?.teams_name }}</th>
+      </tr>
+    </table>
+  </div>
+  <br />
+  <header>List all of the teams in alphabetical order</header>
+  <br />
+  <div class="table1">
+    <table>
+      <tr>
+        <th>uses</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Team Name</th>
+      </tr>
+
+      <tr *ngFor="let q of query4">
+        <th>{{ q?.uses }}</th>
+        <th>{{q?.["1st_name"]}}</th>
+        <th>{{q?.["2nd_name"]}}</th>
+        <th>{{ q?.league_name }}</th>
+      </tr>
+    </table>
+  </div>
+  <br />
+  <header>What teams played on 10/29/2022?</header>
+  <br />
+  <div class="table1">
+    <table>
+      <tr>
+        <th>Home Team</th>
+        <th>Opponent</th>
+      </tr>
+      <tr *ngFor="let q of query5">
+        <th>{{ q?.games_team_name }}</th>
+        <th>{{ q?.opponent }}</th>
+      </tr>
+    </table>
+  </div>
+
+  <br />
+  <header>Which teams played after 10/13/2022?</header>
+  <br />
+  <div class="table1">
+    <table>
+      <tr>
+        <th>Home Team</th>
+        <th>Opponent</th>
+        <th>Game Date</th>
+      </tr>
+      <tr *ngFor="let q of query6">
+        <th>{{ q?.games_team_name }}</th>
+        <th>{{ q?.opponent }}</th>
+        <th>{{ q?.games_date }}</th>
+      </tr>
+    </table>
+  </div>
+
+  <header>How many times did the Sharks play the Jags this year?</header>
+  <br />
+  <div class="table1">
+    <table>
+      <tr>
+        <th>Times Played</th>
+      </tr>
+      <tr *ngFor="let q of query7">
+        <th>{{ q?.Times_Played }}</th>
+      </tr>
+    </table>
+  </div>
+
+  <header>What player has the jersey number 13?</header>
+  <br />
+  <div class="table1">
+    <table>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+      </tr>
+      <tr *ngFor="let q of query8">
+        <th>{{ q?.first_name }}</th>
+        <th>{{ q?.last_name }}</th>
+      </tr>
+    </table>
+  </div>
+  <br />
+  <header>What teams are not in the same league as team Straw Hats?</header>
+  <br />
+  <div class="table1">
+    <table>
+      <tr>
+        <th>Team Name</th>
+      </tr>
+      <tr *ngFor="let q of query9">
+        <th>{{ q?.league_team_name }}</th>
+      </tr>
+    </table>
+  </div>
+  <br />
+  <header>What teams are under .5 win rate?</header>
+  <br />
+  <div class="table1">
+    <table>
+      <tr>
+        <th>Team Name</th>
+      </tr>
+      <tr *ngFor="let q of query10">
+        <th>{{ q?.teams_name }}</th>
+      </tr>
+    </table>
+  </div>
+
+  <br />
+  <header>What teams have the same exact record?</header>
+  <br />
+  <div class="table1">
+    <table>
+      <tr>
+        <th>Team Name</th>
+      </tr>
+      <tr *ngFor="let q of query11">
+        <th>{{ q?.teams_name }}</th>
+      </tr>
+    </table>
+  </div>
+
+  <br />
+  <header>What team has the most RW (position) players?</header>
+  <br />
+  <div class="table1">
+    <table>
+      <tr>
+        <th>Team Name</th>
+        <th>Numbers</th>
+      </tr>
+      <tr *ngFor="let q of query12">
+        <th>{{ q?.team_name }}</th>
+        <th>{{ q?.Numbers }}</th>
+      </tr>
+    </table>
+  </div>
+  <br />
+  <header>How many games had more than 5 total goals scored?</header>
+  <br />
+  <div class="table1">
+    <table>
+      <tr>
+        <th>Count</th>
+      </tr>
+      <tr *ngFor="let q of query13">
+        <th>{{q?.["count(*)"]}}</th>
+      </tr>
+    </table>
+  </div>
+
+  <br />
+  <header>Do player A and Player B play the same position?</header>
+  <br />
+  <div class="table1">
+    <table>
+      <tr>
+        <th>First Name</th>
+        <th>Position</th>
+      </tr>
+      <tr *ngFor="let q of query14">
+        <th>{{ q?.first_name }}</th>
+        <th>{{ q?.position }}</th>
+      </tr>
+    </table>
+
+    <br />
+    <header>What league has the largest number of teams?</header>
+    <br />
+    <div class="table1">
+      <table>
+        <tr>
+          <th>League Name</th>
+        </tr>
+        <tr *ngFor="let q of query15">
+          <th>{{ q?.league_name }}</th>
+        </tr>
+      </table>
     </div>
-  </nav>
-<p>reports works!</p>
+
+    <br />
+    <header>What team is "Luffy D Monkey" on?</header>
+    <br />
+    <div class="table1">
+      <table>
+        <tr>
+          <th>Team Name</th>
+        </tr>
+        <tr *ngFor="let q of query16">
+          <th>{{ q?.team_name }}</th>
+        </tr>
+      </table>
+    </div>
+
+    <br />
+    <header>What teams played during the week of 10/02/2022?</header>
+    <br />
+    <div class="table1">
+      <table>
+        <tr>
+          <th>Home Team name</th>
+          <th>Opponent</th>
+          <th>Date</th>
+        </tr>
+        <tr *ngFor="let q of query17">
+          <th>{{ q?.games_team_name }}</th>
+          <th>{{ q?.opponent }}</th>
+          <th>{{ q?.games_date }}</th>
+        </tr>
+      </table>
+    </div>
+
+    <br />
+    <header>What two teams played in the most recent game?</header>
+    <br />
+    <div class="table1">
+      <table>
+        <tr>
+          <th>Home Team Name</th>
+          <th>Opponent</th>
+          <th>Date</th>
+        </tr>
+        <tr *ngFor="let q of query18">
+          <th>{{ q?.games_team_name }}</th>
+          <th>{{ q?.opponent }}</th>
+          <th>{{ q?.thedate }}</th>
+        </tr>
+      </table>
+    </div>
+
+    <br />
+    <header>What team has played the most home games?</header>
+    <br />
+    <div class="table1">
+      <table>
+        <tr>
+          <th>Home Games</th>
+          <th>Team</th>
+        </tr>
+        <tr *ngFor="let q of query19">
+          <th>{{ q?.Home_Games }}</th>
+          <th>{{ q?.games_team_name }}</th>
+        </tr>
+      </table>
+    </div>
+
+    <br />
+    <header>What league had the most saves?</header>
+    <br />
+    <div class="table1">
+      <table>
+        <tr>
+          <th>League</th>
+          <th>Saves</th>
+        </tr>
+        <tr *ngFor="let q of query20">
+          <th>{{ q?.league_name }}</th>
+          <th>{{ q?.saves }}</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
