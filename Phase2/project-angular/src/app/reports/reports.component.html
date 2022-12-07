@@ -14,26 +14,27 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="tables-access-grated">Players Table</a>
+        <a class="nav-link" style="cursor:pointer" (click)="routeTo('tables-access-grated')" >Players Table</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="teams">Teams Table</a>
+        <a class="nav-link"  style="cursor:pointer" (click)="routeTo('teams')">Teams Table</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="games">Games Table</a>
+        <a class="nav-link" style="cursor:pointer" (click)="routeTo('games')">Games Table</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="league">League Table</a>
+        <a class="nav-link" style="cursor:pointer"(click)="routeTo('league')">League Table</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="player-stats">Player Stats</a>
+        <a class="nav-link" style="cursor:pointer" (click)="routeTo('player-stats')">Player Stats</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="reports">Reports</a>
+        <a class="nav-link" style="cursor:pointer" (click)="routeTo('reports')">Reports</a>
       </li>
     </ul>
   </div>
 </nav>
+
 <br />
 <div class="all">
   <br />
@@ -48,7 +49,7 @@
         <th>Team Wins</th>
         <th>Team Losses</th>
         <th>Team Ties</th>
-        <th>Max(team_win_percent)</th>
+        <th>Win Percentage</th>
       </tr>
 
       <tr>
@@ -56,7 +57,7 @@
         <th>{{ query1?.team_wins }}</th>
         <th>{{ query1?.team_losses }}</th>
         <th>{{ query1?.team_ties }}</th>
-        <th>{{query1?.["MAX(team_win_percent)"]}}</th>
+        <th>{{query1?.Win_Percentage}}</th>
       </tr>
     </table>
   </div>

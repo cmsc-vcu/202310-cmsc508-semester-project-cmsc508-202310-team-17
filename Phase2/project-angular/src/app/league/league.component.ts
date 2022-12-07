@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { LeagueService } from '../services/league-service/league.service';
 
@@ -16,7 +17,8 @@ export class LeagueComponent implements OnInit {
   leagueForm2!: FormGroup;
   isDisabled!: boolean;
   league:any;
-  constructor(private leagueService: LeagueService, private fb: FormBuilder) {}
+ 
+  constructor(private leagueService: LeagueService, private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     this.editing = false;
@@ -52,7 +54,7 @@ export class LeagueComponent implements OnInit {
 
   submitForm(game:any){
       this.leagueService.addLeague(game).subscribe(() => {
-        window.location.reload();
+        this.ngOnInit();
       });
 
   }
@@ -67,13 +69,17 @@ export class LeagueComponent implements OnInit {
   }
   deleteLeague(leagueName:string, league_team_name:string) {
     this.leagueService.deleteLeague(leagueName,league_team_name).subscribe(() => {
-      window.location.reload();
+      this.ngOnInit();
     })
   }
 
   submitEdit(league:any){
     this.leagueService.updateLeague(league).subscribe(() => {
-      window.location.reload();
+      this.ngOnInit();
     })
+  }
+
+  routeTo(s:string){
+    this.router.navigate(['/' + s]);
   }
 }

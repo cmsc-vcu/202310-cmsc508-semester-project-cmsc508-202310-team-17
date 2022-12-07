@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ReportService } from '../services/report-service/report.service';
 
 @Component({
@@ -28,7 +29,7 @@ export class ReportsComponent implements OnInit {
   query19:any;
   query20:any;
 
-  constructor(private reportService :ReportService) { }
+  constructor(private reportService :ReportService, private router: Router) { }
 
   ngOnInit(): void {
     this.reportService.getQuery1().subscribe((queries:any) => { this.query1 = queries.result[0]
@@ -102,6 +103,9 @@ export class ReportsComponent implements OnInit {
 
 
 
+  }
+  routeTo(s:string){
+    this.router.navigate(['/' + s]);
   }
 
 }

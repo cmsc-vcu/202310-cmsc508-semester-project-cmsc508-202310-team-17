@@ -7,7 +7,7 @@ import { ListPlayersComponent } from './list-players/list-players.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { PlayersService } from './services/players-service/Players.service';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common'
+import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common'
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -47,7 +47,7 @@ import { ReportsComponent } from './reports/reports.component';
     MatButtonModule,
     MatCardModule
   ],
-  providers: [PlayersService],
+  providers: [PlayersService, {provide : LocationStrategy , useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

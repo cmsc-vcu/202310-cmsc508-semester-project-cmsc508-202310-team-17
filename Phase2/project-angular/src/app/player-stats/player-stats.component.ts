@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { PlayerStatsService } from '../services/player-stats-service/player-stats.service';
 
@@ -19,7 +20,8 @@ export class PlayerStatsComponent implements OnInit {
 
   constructor(
     private playerStatsService: PlayerStatsService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -59,13 +61,13 @@ export class PlayerStatsComponent implements OnInit {
 
   submitForm(data: any) {
     this.playerStatsService.addPlayerStats(data).subscribe(() => {
-      window.location.reload();
+      this.ngOnInit();
     });
   }
 
   deletePlayerStats(id:number){
     this.playerStatsService.deleteStats(id).subscribe(() => {
-       window.location.reload();
+      this.ngOnInit();
     });
 
   }
@@ -83,7 +85,11 @@ export class PlayerStatsComponent implements OnInit {
 
   submitEdit(formData:any){
     this.playerStatsService.updateStats(formData).subscribe(() =>{
-      window.location.reload();
+      this.ngOnInit();
     })
+  }
+
+  routeTo(s:string){
+    this.router.navigate(['/' + s]);
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GameServiceService } from '../services/game-service/game-service.service';
 import { map } from 'rxjs/operators';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-games',
   templateUrl: './games.component.html',
@@ -14,10 +15,12 @@ export class GamesComponent implements OnInit {
   editing!: boolean;
   gameForm2!: FormGroup;
   isDisabled!: boolean;
+ 
 
   constructor(
     private gameService: GameServiceService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -56,7 +59,7 @@ export class GamesComponent implements OnInit {
 
   submitForm(game: any) {
     this.gameService.createGame(game).subscribe(() => {
-      window.location.reload();
+      this.ngOnInit();
     });
   }
   edit(game: any) {
@@ -73,13 +76,16 @@ export class GamesComponent implements OnInit {
   }
   submitEdit(game: any) {
     this.gameService.updateGame(game).subscribe(() => {
-      window.location.reload();
+      this.ngOnInit();
     });
   }
 
   deleteGame(ID: number) {
     this.gameService.deleteGame(ID).subscribe(() => {
-      window.location.reload();
+      this.ngOnInit();
     });
+  }
+  routeTo(s:string){
+    this.router.navigate(['/' + s]);
   }
 }

@@ -21,9 +21,14 @@ export class ListPlayersComponent implements OnInit {
     private playersService: PlayersService,
     private formBuilder: FormBuilder,
     private router: Router
-  ) {}
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   ngOnInit(): void {
+    
+
+
     this.wantToAddPlayer = false;
     this.playersService
       .getPlayers()
@@ -50,7 +55,7 @@ export class ListPlayersComponent implements OnInit {
   }
   submitChanges(player: any) {
     this.playersService.editPlayer(player).subscribe(() => {
-      window.location.reload();
+      this.ngOnInit();
     });
   }
   editPlayer(player: Players) {
@@ -68,7 +73,7 @@ export class ListPlayersComponent implements OnInit {
 
   addPlayer(Player: object) {
     this.playersService.createPlayer(Player).subscribe(() => {
-      window.location.reload();
+     this.ngOnInit();
     });
   }
 
@@ -76,10 +81,11 @@ export class ListPlayersComponent implements OnInit {
     this.wantToAddPlayer = !this.wantToAddPlayer;
   }
   deletePlayer(id: number) {
-    console.log('this is id', id);
     this.playersService.deletePLayer(id).subscribe(() => {
-      window.location.reload();
+      this.ngOnInit();
     });
   }
-  
+  routeTo(s:string){
+    this.router.navigate(['/' + s]);
+  }
 }

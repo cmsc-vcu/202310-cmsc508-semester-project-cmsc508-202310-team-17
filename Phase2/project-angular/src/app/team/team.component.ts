@@ -49,7 +49,7 @@ export class TeamComponent implements OnInit {
 
   submit(team: any) {
     this.teamService.createTeam(team).subscribe(() => {
-      window.location.reload();
+      this.ngOnInit();
     });
   }
 
@@ -79,7 +79,11 @@ export class TeamComponent implements OnInit {
 
   submitEdit(team: any) {
     this.teamService.updateTeam(team).subscribe(() => {
-      window.location.reload();
+      this.ngOnInit();
     });
+  }
+
+  routeTo(s:string){
+    this.router.navigate(['/' + s]);
   }
 }
