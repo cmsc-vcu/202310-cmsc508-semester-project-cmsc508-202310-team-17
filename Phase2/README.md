@@ -13,8 +13,8 @@ This database can be utilized to help the organization better organize the leagu
 Lessons learned:
 What we would change for next time would be to work on it together more. Since our schedules opposed eachother it was hard for us to work together. 
 
-How to improve:
-If we were able to spend more time on the project instead of having other work to do at the same time, we definitely could make improvements on the setup.
+How to improve semester project:
+The only thing we could think of is giving soft deadlines to help students stay on track.
 
 Web Application:
 http://cmsc508.com/202310/team17/proj/#/
