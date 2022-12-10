@@ -18,3 +18,7 @@ The only thing we could think of is giving soft deadlines to help students stay 
 
 Web Application:
 http://cmsc508.com/202310/team17/proj/#/
+
+Username is VCU password is RAMS all Capitalized 
+
+
