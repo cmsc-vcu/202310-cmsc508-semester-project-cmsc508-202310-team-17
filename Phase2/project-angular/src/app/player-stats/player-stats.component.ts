@@ -86,6 +86,7 @@ export class PlayerStatsComponent implements OnInit {
   submitEdit(formData:any){
     this.playerStatsService.updateStats(formData).subscribe(() =>{
       this.ngOnInit();
+      this.editing = false;
     })
   }
 

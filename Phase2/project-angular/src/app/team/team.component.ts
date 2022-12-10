@@ -62,8 +62,8 @@ export class TeamComponent implements OnInit {
   }
 
   edit(team: any) {
+    
     this.editing = true;
-
     this.teamForm2 = this.formBuilder.group({
       teams_name: team.teams_name,
       team_wins: team.team_wins,
@@ -79,7 +79,9 @@ export class TeamComponent implements OnInit {
 
   submitEdit(team: any) {
     this.teamService.updateTeam(team).subscribe(() => {
+      this.editing = false;
       this.ngOnInit();
+   
     });
   }
 

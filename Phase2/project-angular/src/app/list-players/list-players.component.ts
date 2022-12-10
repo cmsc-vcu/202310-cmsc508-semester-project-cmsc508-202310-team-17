@@ -56,6 +56,7 @@ export class ListPlayersComponent implements OnInit {
   submitChanges(player: any) {
     this.playersService.editPlayer(player).subscribe(() => {
       this.ngOnInit();
+      this.editPLayerEnabled =false;
     });
   }
   editPlayer(player: Players) {

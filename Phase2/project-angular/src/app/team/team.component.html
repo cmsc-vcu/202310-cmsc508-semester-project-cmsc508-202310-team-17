@@ -47,8 +47,8 @@
       <th>{{team.team_losses }}</th>
       <th>{{team.team_ties }}</th>
       <th>{{team.team_win_percent}}</th>
-      <th> <button class ="btn btn-primary" (click)="edit(team)" >EDIT</button></th>
-      <!-- <th><button class ="btn btn-secondary">cancle</button></th>  -->
+      <th> <button class ="btn btn-primary" (click)="edit(team)">EDIT</button></th>
+      <th><button class ="btn btn-secondary" [hidden]="!editing" (click)="cancleEdit()">cancle</button></th> 
     </tr>
     
   </table>
@@ -183,6 +183,5 @@
     <br />
     <button class="btn btn-success" type="submit" >Finish</button>
     <br><br>
-  <button class="btn btn-danger" (click)="cancle()">Cancle</button>
   </form>
 </div>

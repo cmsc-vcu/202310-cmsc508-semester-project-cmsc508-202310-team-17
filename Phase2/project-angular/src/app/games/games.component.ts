@@ -77,6 +77,7 @@ export class GamesComponent implements OnInit {
   submitEdit(game: any) {
     this.gameService.updateGame(game).subscribe(() => {
       this.ngOnInit();
+      this.editing = false;
     });
   }
 

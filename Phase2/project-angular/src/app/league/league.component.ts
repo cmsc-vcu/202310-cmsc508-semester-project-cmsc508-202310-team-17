@@ -76,6 +76,7 @@ export class LeagueComponent implements OnInit {
   submitEdit(league:any){
     this.leagueService.updateLeague(league).subscribe(() => {
       this.ngOnInit();
+      this.editing = false;
     })
   }
 
