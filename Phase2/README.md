@@ -20,5 +20,7 @@ Web Application:
 http://cmsc508.com/202310/team17/proj/#/
 
 Username is VCU password is RAMS all Capitalized 
+ 
+The video presentation link is https://github.com/cmsc-vcu/202310-cmsc508-semester-project-cmsc508-202310-team-17/blob/main/Phase2/2022-12-10%2013-18-31.mp4?raw=true
 
 
